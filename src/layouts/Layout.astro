@@ -1,0 +1,190 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "@/components/footer.astro";
+import Navbar from "@/components/navbar/navbar.astro";
+import "@fontsource-variable/inter/index.css";
+import "@fontsource-variable/bricolage-grotesque";
+import "../styles/global.css";
+import "../styles/animations.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/opengraph.jpg",
+  Astro.site
+).toString();
+
+const { title, description, keywords, image } = Astro.props;
+
+const defaultDescription = "FastShip - Premier IT Services & Software Development Company specializing in AI-powered development, custom software solutions, digital transformation, and elite engineering teams. We deliver 10x faster results with AI agents and cutting-edge technology.";
+
+const defaultKeywords = "IT services, software development, AI agents, custom software, digital transformation, web development, mobile apps, cloud solutions, DevOps, artificial intelligence, machine learning, enterprise software, startup development, MVP development, rapid prototyping, agile development, software consulting, technology solutions, business automation, digital innovation";
+
+const makeTitle = title
+  ? title + " | " + "FastShip"
+  : "FastShip - Premier IT Services & Software Development Company | AI-Powered Development";
+
+const pageDescription = description || defaultDescription;
+const pageKeywords = keywords || defaultKeywords;
+const pageImage = image || resolvedImageWithDomain;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{makeTitle}</title>
+    <meta name="title" content={makeTitle} />
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={pageKeywords} />
+    <meta name="author" content="FastShip" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={makeTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={pageImage} />
+    <meta property="og:site_name" content="FastShip" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={makeTitle} />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content={pageImage} />
+    <meta property="twitter:creator" content="@fastship" />
+    <meta property="twitter:site" content="@fastship" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="apple-mobile-web-app-title" content="FastShip" />
+    <meta name="application-name" content="FastShip" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "FastShip",
+        "url": "https://fastship.com",
+        "logo": "https://fastship.com/logo.jpeg",
+        "description": "Premier IT Services & Software Development Company specializing in AI-powered development and custom software solutions",
+        "foundingDate": "2024",
+        "industry": "Information Technology",
+        "serviceType": [
+          "Custom Software Development",
+          "AI-Powered Development",
+          "Digital Transformation",
+          "Web Development",
+          "Mobile App Development",
+          "Cloud Solutions",
+          "DevOps Services",
+          "Software Consulting"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
+        "sameAs": [
+          "https://twitter.com/fastship",
+          "https://linkedin.com/company/fastship",
+          "https://github.com/fastship"
+        ]
+      }
+    </script>
+    
+    <!-- Structured Data for WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "FastShip",
+        "url": "https://fastship.com",
+        "description": "Premier IT Services & Software Development Company",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://fastship.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <SEO
+      title={makeTitle}
+      description={pageDescription}
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@fastship",
+        site: "@fastship",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: makeTitle,
+          image: pageImage,
+        },
+        image: {
+          alt: "FastShip IT Services - We don't just ship code, We launch Rocket",
+        },
+      }}
+    />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+    
+    <!-- GSAP Animations -->
+    <script type="module">
+      import { initAnimations } from '/src/utils/animations.js';
+      
+      // Wait for DOM to be ready
+      document.addEventListener('DOMContentLoaded', () => {
+        // Small delay to ensure all elements are rendered
+        setTimeout(() => {
+          initAnimations();
+        }, 100);
+      });
+    </script>
+    
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

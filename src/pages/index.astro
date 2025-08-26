@@ -1,0 +1,37 @@
+---
+import Container from "@/components/container.astro";
+import Features from "@/components/features.astro";
+import Hero from "@/components/hero.astro";
+import Logos from "@/components/logos.astro";
+import Layout from "@/layouts/Layout.astro";
+import FastShip10x from "@/components/fastship-10x.astro";
+import HowWeWork from "@/components/how-we-work.astro";
+import ForRoles from "@/components/for-roles.astro";
+import Reviews from "@/components/reviews.astro";
+import Faq from "@/components/faq.astro";
+import Stats from "@/components/stats.astro";
+
+// SEO-optimized content for IT services
+const seoTitle = "FastShip - Premier IT Services & Software Development Company | AI-Powered Development";
+const seoDescription = "FastShip delivers cutting-edge IT services including custom software development, AI-powered solutions, digital transformation, and elite engineering teams. Get 10x faster results with our AI agents and innovative technology solutions.";
+const seoKeywords = "IT services, software development, AI agents, custom software, digital transformation, web development, mobile apps, cloud solutions, DevOps, artificial intelligence, machine learning, enterprise software, startup development, MVP development, rapid prototyping, agile development, software consulting, technology solutions, business automation, digital innovation, FastShip";
+---
+
+<Layout 
+  title=""
+  description={seoDescription}
+  keywords={seoKeywords}
+  image="/logo.jpeg"
+>
+  <Container>
+    <Hero />
+    <FastShip10x />
+    <Features />
+    <Stats />
+    <HowWeWork />
+    <ForRoles />
+    <Reviews />
+    <Faq />
+    <Logos />
+  </Container>
+</Layout>

@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+
+// Filter team entries with 'draft: false' & date before current date
+const publishedTeamMembers = await getCollection("team", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+// SEO-optimized content for about page
+const seoTitle = "About FastShip - IT Services & Software Development Company";
+const seoDescription = "Learn about FastShip, a leading IT services company specializing in AI-powered software development, digital transformation, and innovative technology solutions. Discover our mission to deliver exceptional value through cutting-edge technology.";
+const seoKeywords = "about FastShip, IT services company, software development company, AI-powered development, digital transformation, technology solutions, custom software development, enterprise solutions, startup development, MVP development, rapid prototyping, agile development, software consulting, technology innovation, business automation, digital economy, FastShip mission, FastShip approach, why choose FastShip";
+---
+
+<Layout 
+  title="About"
+  description={seoDescription}
+  keywords={seoKeywords}
+  image="/logo.jpeg"
+>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">About FastShip</Fragment>
+      <Fragment slot="desc">Your trusted partner in digital transformation and software innovation.</Fragment>
+    </Sectionhead>
+
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">
+        Pioneering the Future of Technology
+      </h2>
+      <p class="text-lg leading-relaxed text-black">
+        FastShip is a leading IT service firm dedicated to transforming businesses through innovative technology solutions. 
+        We specialize in custom software development, digital transformation, and cutting-edge technology services that 
+        help organizations thrive in the digital economy.
+      </p>
+      <p class="text-lg leading-relaxed text-black mt-4">
+        Our mission is to deliver exceptional value through technology that not only meets current needs but anticipates 
+        future challenges. We believe in building lasting partnerships with our clients, understanding their unique 
+        business requirements, and delivering solutions that drive measurable results.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
+      <div class="bg-gray-50 p-8 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Our Approach</h3>
+        <p class="text-black">
+          We follow an agile, collaborative approach that puts your business needs first. From initial consultation 
+          to final deployment and ongoing support, we work closely with you to ensure every solution aligns with 
+          your strategic objectives.
+        </p>
+      </div>
+      <div class="bg-gray-50 p-8 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Why Choose FastShip</h3>
+        <p class="text-black">
+          With years of experience across diverse industries, our team brings deep technical expertise and 
+          business acumen to every project. We're committed to innovation, quality, and delivering solutions 
+          that exceed expectations.
+        </p>
+      </div>
+    </div>
+  </Container>
+</Layout>

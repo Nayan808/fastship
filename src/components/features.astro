@@ -1,0 +1,69 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "Custom Software Development",
+    description:
+      "Tailored software solutions built from the ground up to meet your unique business requirements and drive operational efficiency.",
+    icon: "bx:briefcase",
+  },
+  {
+    title: "Web & Mobile Applications",
+    description:
+      "Modern, responsive web applications and native mobile apps that deliver exceptional user experiences across all platforms.",
+    icon: "bx:phone",
+  },
+  {
+    title: "Cloud Infrastructure & DevOps",
+    description:
+      "Scalable cloud solutions, CI/CD pipelines, and infrastructure automation to accelerate your development and deployment processes.",
+    icon: "bx:server",
+  },
+  {
+    title: "Digital Transformation",
+    description:
+      "End-to-end digital transformation services to modernize your business processes and leverage cutting-edge technologies.",
+    icon: "bx:rocket",
+  },
+  {
+    title: "Data Analytics & AI",
+    description:
+      "Advanced analytics, machine learning solutions, and AI-powered insights to transform your data into actionable business intelligence.",
+    icon: "bx:bar-chart-alt",
+  },
+  {
+    title: "24/7 Support & Maintenance",
+    description:
+      "Round-the-clock technical support, maintenance, and monitoring to ensure your systems run smoothly and securely.",
+    icon: "bx:help-circle",
+  },
+];
+---
+
+<div class="mt-20 md:mt-32" id="services">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
+    Our Services
+  </h2>
+      <p class="text-lg mt-6 text-black text-center max-w-3xl mx-auto">
+      FastShip delivers enterprise-grade technology solutions that transform businesses, 
+      streamline operations, and drive innovation in the digital age.
+    </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-20 gap-12">
+  {
+    features.map((item) => (
+      <div class="feature-card service-card bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+        <div class="text-center">
+          <div class="bg-black text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Icon class="w-8 h-8" name={item.icon} />
+          </div>
+          <h3 class="text-xl font-semibold mb-4">{item.title}</h3>
+          <p class="text-black leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

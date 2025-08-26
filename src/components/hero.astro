@@ -1,0 +1,46 @@
+---
+import { Picture } from "astro:assets";
+import heroImage from "@/assets/hero.png";
+import { Icon } from "astro-icon/components";
+---
+
+<main class="hero-section grid lg:grid-cols-2 place-items-center pt-20 pb-16 md:pt-24 md:pb-32">
+  <div class="py-6 md:order-1 hidden md:block">
+    <Picture
+      src={heroImage}
+      alt="FastShip IT Services"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 800px) 100vw, 620px"
+      loading="eager"
+      format="avif"
+      class="hero-image"
+    />
+  </div>
+  <div class="text-center lg:text-left">
+    <h1 class="hero-title text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      We don't just ship code,<br/>We launch Rocket
+    </h1>
+    <p class="hero-subtitle text-xl mt-6 text-black max-w-2xl mx-auto lg:mx-0">
+      FastShip is your premier IT service partner, delivering cutting-edge software solutions, 
+      digital transformation, and innovative technology services that propel your business forward.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+      <a
+        href="https://calendly.com/contact-fastship/30min?back=1&month=2025-08"
+        target="_blank"
+        rel="noopener"
+        class="hero-cta cta-button book-call-btn bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors flex gap-2 items-center justify-center text-lg">
+        <Icon class="text-white w-6 h-6" name="bx:rocket" />
+        Book a Call
+      </a>
+    </div>
+  </div>
+  
+  <!-- Background Shapes for Animation -->
+  <svg class="background-shape morph-shape absolute top-20 right-20 w-32 h-32 opacity-10" viewBox="0 0 100 100">
+    <path d="M0,0 C100,0 100,100 0,100 Z" fill="currentColor"/>
+  </svg>
+  <svg class="background-shape morph-shape absolute bottom-20 left-20 w-24 h-24 opacity-10" viewBox="0 0 100 100">
+    <path d="M0,0 C100,0 100,100 0,100 Z" fill="currentColor"/>
+  </svg>
+</main>
