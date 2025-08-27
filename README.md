@@ -1,4 +1,4 @@
-u# FastShip - Premier IT Services & Software Development
+# FastShip - Premier IT Services & Software Development
 
 FastShip is a leading IT service firm dedicated to transforming businesses through innovative technology solutions. We specialize in custom software development, digital transformation, and cutting-edge technology services that help organizations thrive in the digital economy.
 
