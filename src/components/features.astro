@@ -2,126 +2,82 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="mt-20 md:mt-32" id="features">
+<div class="mt-20 md:mt-32" id="services">
   <div class="text-center mb-16">
     <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-black">
       Our Services
     </h2>
+    <p class="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">
+      We deliver cutting-edge solutions that accelerate your business growth and digital transformation
+    </p>
   </div>
 
-  <div class="max-w-7xl mx-auto space-y-16">
-    <!-- GenAI Software Development -->
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h3 class="text-3xl font-bold text-gray-800 mb-6">
-          GenAI Software Development
-        </h3>
-        <p class="text-lg text-black leading-relaxed mb-6">
-          We build custom GenAI software solutions that accelerate your development process. Our team creates intelligent applications that generate code, detect bugs automatically, and validate testing - delivering superior software quality in record time.
-        </p>
-        <ul class="space-y-3">
-          <li class="flex items-center gap-3">
-            <Icon class="w-5 h-5 text-green-500" name="bx:check" />
-            <span class="text-black">Custom AI-powered code generation systems</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <Icon class="w-5 h-5 text-green-500" name="bx:check" />
-            <span class="text-black">Intelligent bug detection and automated fixes</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <Icon class="w-5 h-5 text-green-500" name="bx:check" />
-            <span class="text-black">Automated test case generation and validation</span>
-          </li>
-        </ul>
-      </div>
-      
-      <!-- GenAI Development Interface Mockup -->
-      <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-        <div class="space-y-4">
-          <div class="flex justify-start">
-            <div class="bg-purple-500 text-white px-4 py-2 rounded-2xl rounded-bl-md max-w-xs">
-              Generate React component for user dashboard
-            </div>
-          </div>
-          <div class="flex justify-end">
-            <div class="bg-gray-200 text-black px-4 py-2 rounded-2xl rounded-br-md max-w-xs">
-              Here's the responsive dashboard component...
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+    <!-- AI Agents and Custom Chat Bots -->
+    <div class="bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300 group">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">AI Agents & Custom Chat Bots</h3>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Intelligent AI agents that automate complex workflows and custom chatbots that enhance customer engagement. Built with cutting-edge NLP and machine learning.
+      </p>
+      <ul class="space-y-2">
+        <li class="text-sm text-gray-600">Custom AI workflow automation</li>
+        <li class="text-sm text-gray-600">Multi-language chatbot solutions</li>
+        <li class="text-sm text-gray-600">Integration with existing systems</li>
+      </ul>
     </div>
 
-    <!-- Agentic Environment & MVPs -->
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Agentic Environment Interface Mockup -->
-      <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-        <div class="space-y-4">
-          <button class="bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
-            + Deploy MVP Agent
-          </button>
-          <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <div class="flex justify-between items-start mb-3">
-              <button class="text-gray-500 text-sm">Deploy</button>
-              <Icon class="w-5 h-5 text-gray-500" name="bx:dots-vertical" />
-            </div>
-            <h4 class="font-semibold text-black mb-2">E-commerce MVP Platform</h4>
-            <p class="text-sm text-gray-600 mb-4">
-              We build scalable e-commerce platforms with AI-powered recommendations, automated inventory management, and intelligent customer insights using advanced agentic workflows.
-            </p>
-            <div class="flex items-center gap-3">
-              <div class="flex -space-x-2">
-                <div class="w-6 h-6 bg-gray-300 rounded-full"></div>
-                <div class="w-6 h-6 bg-gray-400 rounded-full"></div>
-                <div class="w-6 h-6 bg-gray-500 rounded-full"></div>
-              </div>
-              <div class="flex items-center gap-1 text-gray-500">
-                <Icon class="w-4 h-4" name="bx:rocket" />
-                <span class="text-xs">Ready</span>
-              </div>
-              <div class="flex items-center gap-1 text-gray-500">
-                <Icon class="w-4 h-4" name="bx:star" />
-                <span class="text-xs">AI-Powered</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="text-3xl font-bold text-gray-800 mb-6">
-          Agentic Environment & MVPs
-        </h3>
-        <p class="text-lg text-black leading-relaxed">
-          We design and deploy intelligent agentic environments that autonomously manage your MVP development. Our systems handle everything from initial concept to scalable deployment, ensuring rapid iteration and market validation while you focus on your core business.
-        </p>
-      </div>
+    <!-- Full Stack Development -->
+    <div class="bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300 group">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Full Stack Development</h3>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        End-to-end web application development from database design to user interface. We build scalable, maintainable solutions using modern technologies.
+      </p>
+      <ul class="space-y-2">
+        <li class="text-sm text-gray-600">Frontend & backend development</li>
+        <li class="text-sm text-gray-600">Database design & optimization</li>
+        <li class="text-sm text-gray-600">API development & integration</li>
+      </ul>
     </div>
 
-    <!-- Scalable Web Apps & AI/ML -->
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h3 class="text-3xl font-bold text-gray-800 mb-6">
-          Scalable Web Apps & AI/ML
-        </h3>
-        <p class="text-lg text-black leading-relaxed mb-6">
-          We build enterprise-grade web applications with integrated AI/ML capabilities that scale with your business. Our solutions ensure high performance, intelligent automation, and seamless user experiences that grow from startup to enterprise level.
-        </p>
-        <ul class="space-y-3">
-          <li class="flex items-center gap-3">
-            <Icon class="w-5 h-5 text-green-500" name="bx:check" />
-            <span class="text-black">Microservices architecture with AI integration</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Scalable App Interface Mockup -->
-      <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-        <button class="bg-gray-700 text-white px-6 py-3 rounded-lg flex items-center gap-3">
-          <Icon class="w-5 h-5" name="bx:server" />
-          <span>Scale to 1M+ users</span>
-        </button>
-      </div>
+    <!-- Mobile App Development -->
+    <div class="bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300 group">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Mobile App Development</h3>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Native and cross-platform mobile applications that deliver exceptional user experiences. Built for performance, scalability, and user engagement.
+      </p>
+      <ul class="space-y-2">
+        <li class="text-sm text-gray-600">iOS & Android development</li>
+        <li class="text-sm text-gray-600">Cross-platform solutions</li>
+        <li class="text-sm text-gray-600">App store optimization</li>
+      </ul>
     </div>
+
+    <!-- AI/ML Development -->
+    <div class="bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300 group">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">AI/ML Development</h3>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Custom machine learning models and AI solutions that transform your data into actionable insights. From predictive analytics to computer vision.
+      </p>
+      <ul class="space-y-2">
+        <li class="text-sm text-gray-600">Custom ML model development</li>
+        <li class="text-sm text-gray-600">Predictive analytics solutions</li>
+        <li class="text-sm text-gray-600">Computer vision & NLP</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="text-center mt-16">
+    <p class="text-lg text-gray-600 mb-6">
+      Ready to transform your business with our services?
+    </p>
+    <a 
+      href="https://calendly.com/contact-fastship/30min?back=1&month=2025-08"
+      target="_blank"
+      rel="noopener"
+      class="cta-button book-call-btn inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-xl font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl">
+      <Icon class="w-6 h-6" name="bx:rocket" />
+      Book a Call
+    </a>
   </div>
 </div>
