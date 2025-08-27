@@ -1,4 +1,4 @@
-# FastShip - Premier IT Services & Software Development
+u# FastShip - Premier IT Services & Software Development
 
 FastShip is a leading IT service firm dedicated to transforming businesses through innovative technology solutions. We specialize in custom software development, digital transformation, and cutting-edge technology services that help organizations thrive in the digital economy.
 
@@ -80,9 +80,8 @@ fastship/
 
 Ready to launch your next project? Get in touch with FastShip:
 
-- **Email**: hello@fastship.dev
-- **Phone**: +1 (555) 123-4567
-- **Location**: San Francisco, CA | Remote First
+- **Email**: contact@fastship.work
+- **Location**: Hyderabad, Telangana, India
 
 ## 📄 License
 
