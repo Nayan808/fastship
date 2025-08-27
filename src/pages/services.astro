@@ -1,0 +1,138 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import { Icon } from "astro-icon/components";
+
+// SEO-optimized content for services page
+const seoTitle = "Our Services - FastShip IT Services & Software Development Company";
+const seoDescription = "FastShip delivers enterprise-grade technology solutions including custom software development, web & mobile applications, cloud infrastructure, digital transformation, data analytics & AI, and 24/7 support. Transform your business with our cutting-edge IT services.";
+const seoKeywords = "IT services, custom software development, web development, mobile app development, cloud infrastructure, DevOps, digital transformation, data analytics, artificial intelligence, machine learning, 24/7 support, software maintenance, technology solutions, enterprise software, business automation, FastShip services";
+---
+
+<Layout 
+  title="Services"
+  description={seoDescription}
+  keywords={seoKeywords}
+  image="/logo.jpeg"
+>
+  <Container>
+    <!-- Header Section -->
+    <div class="text-center mb-16 mt-20">
+      <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-black mb-6">
+        Our Services
+      </h1>
+      <p class="text-lg text-black max-w-4xl mx-auto leading-relaxed">
+        FastShip delivers enterprise-grade technology solutions that transform businesses, streamline operations, and drive innovation in the digital age.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
+      <!-- Custom Software Development -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Icon class="w-8 h-8 text-white" name="bx:briefcase" />
+        </div>
+        <h3 class="text-xl font-bold text-black text-center mb-4">
+          Custom Software Development
+        </h3>
+        <p class="text-black text-center leading-relaxed">
+          Tailored software solutions built from the ground up to meet your unique business requirements and drive operational efficiency.
+        </p>
+      </div>
+
+      <!-- Web & Mobile Applications -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Icon class="w-8 h-8 text-white" name="bx:phone" />
+        </div>
+        <h3 class="text-xl font-bold text-black text-center mb-4">
+          Web & Mobile Applications
+        </h3>
+        <p class="text-black text-center leading-relaxed">
+          Modern, responsive web applications and native mobile apps that deliver exceptional user experiences across all platforms.
+        </p>
+      </div>
+
+      <!-- Cloud Infrastructure & DevOps -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Icon class="w-8 h-8 text-white" name="bx:server" />
+        </div>
+        <h3 class="text-xl font-bold text-black text-center mb-4">
+          Cloud Infrastructure & DevOps
+        </h3>
+        <p class="text-black text-center leading-relaxed">
+          Scalable cloud solutions, CI/CD pipelines, and infrastructure automation to accelerate your development and deployment processes.
+        </p>
+      </div>
+
+      <!-- Digital Transformation -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Icon class="w-8 h-8 text-white" name="bx:rocket" />
+        </div>
+        <h3 class="text-xl font-bold text-black text-center mb-4">
+          Digital Transformation
+        </h3>
+        <p class="text-black text-center leading-relaxed">
+          End-to-end digital transformation services to modernize your business processes and leverage cutting-edge technologies.
+        </p>
+      </div>
+
+      <!-- Data Analytics & AI -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Icon class="w-8 h-8 text-white" name="bx:bar-chart-alt" />
+        </div>
+        <h3 class="text-xl font-bold text-black text-center mb-4">
+          Data Analytics & AI
+        </h3>
+        <p class="text-black text-center leading-relaxed">
+          Advanced analytics, machine learning solutions, and AI-powered insights to transform your data into actionable business intelligence.
+        </p>
+      </div>
+
+      <!-- Support & Maintenance -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Icon class="w-8 h-8 text-white" name="bx:help-circle" />
+        </div>
+        <h3 class="text-xl font-bold text-black text-center mb-4">
+           Support & Maintenance
+        </h3>
+        <p class="text-black text-center leading-relaxed">
+          Round-the-clock technical support, maintenance, and monitoring to ensure your systems run smoothly and securely.
+        </p>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center bg-gray-50 py-16 rounded-2xl">
+      <h2 class="text-3xl font-bold text-black mb-4">
+        Ready to Transform Your Business?
+      </h2>
+      <p class="text-lg text-black mb-8 max-w-2xl mx-auto">
+        Let's discuss how our services can help you achieve your technology goals and drive business growth.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/contact" 
+          class="bg-black text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors inline-flex items-center justify-center gap-2"
+        >
+          <Icon class="w-5 h-5" name="bx:envelope" />
+          Get Started
+        </a>
+        <a 
+          href="https://calendly.com/contact-fastship/30min?back=1&month=2025-08" 
+          target="_blank" 
+          rel="noopener"
+          class="bg-white text-black px-8 py-4 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors inline-flex items-center justify-center gap-2"
+        >
+          <Icon class="w-5 h-5" name="bx:calendar" />
+          Book a Call
+        </a>
+      </div>
+    </div>
+  </Container>
+</Layout>

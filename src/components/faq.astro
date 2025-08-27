@@ -14,63 +14,133 @@ import { Icon } from "astro-icon/components";
 
   <div class="max-w-4xl mx-auto space-y-4">
     <!-- FAQ Item 1 -->
-    <div class="border border-gray-200 rounded-lg overflow-hidden">
-      <div class="bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+    <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+      <div class="faq-header bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-medium text-black">
             How do you define a "Sprint" at FastShip?
           </h3>
-          <Icon class="text-gray-400 w-6 h-6" name="bx:plus" />
+          <div class="faq-icon text-gray-400 w-6 h-6 transition-transform duration-300 flex items-center justify-center">
+            <span class="text-2xl">+</span>
+          </div>
         </div>
+      </div>
+      <div class="faq-content hidden bg-gray-50 px-6 pb-6">
+        <p class="text-black leading-relaxed">
+          At FastShip, we define a "Sprint" as a focused 1-2 week development cycle where we deliver working, deployable features. Unlike traditional agencies that track hours, we focus on outcomes - each sprint delivers tangible value that moves your project forward. Our sprints include planning, development, testing, and deployment phases, ensuring you see progress every week.
+        </p>
       </div>
     </div>
 
     <!-- FAQ Item 2 -->
-    <div class="border border-gray-200 rounded-lg overflow-hidden">
-      <div class="bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+    <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+      <div class="faq-header bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-medium text-black">
             What technology stack do you support?
           </h3>
-          <Icon class="text-gray-400 w-6 h-6" name="bx:plus" />
+          <div class="faq-icon text-gray-400 w-6 h-6 transition-transform duration-300 flex items-center justify-center">
+            <span class="text-2xl">+</span>
+          </div>
         </div>
+      </div>
+      <div class="faq-content hidden bg-gray-50 px-6 pb-6">
+        <p class="text-black leading-relaxed">
+          We support a comprehensive range of modern technologies including React, Vue.js, Angular for frontend; Node.js, Python, Java, .NET for backend; AWS, Azure, Google Cloud for cloud infrastructure; and specialized AI/ML frameworks like TensorFlow, PyTorch, and OpenAI. Our team is technology-agnostic and will recommend the best stack based on your specific project requirements and business goals.
+        </p>
       </div>
     </div>
 
     <!-- FAQ Item 3 -->
-    <div class="border border-gray-200 rounded-lg overflow-hidden">
-      <div class="bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+    <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+      <div class="faq-header bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-medium text-black">
             How does payment work with FastShip?
           </h3>
-          <Icon class="text-gray-400 w-6 h-6" name="bx:plus" />
+          <div class="faq-icon text-gray-400 w-6 h-6 transition-transform duration-300 flex items-center justify-center">
+            <span class="text-2xl">+</span>
+          </div>
         </div>
+      </div>
+      <div class="faq-content hidden bg-gray-50 px-6 pb-6">
+        <p class="text-black leading-relaxed">
+          We operate on an outcome-based pricing model. You pay for completed features and working software, not for time spent. We offer flexible payment terms including milestone-based payments, monthly retainers for ongoing projects, and project-based pricing for specific deliverables. This ensures you only pay for value received and keeps us focused on delivering results, not counting hours.
+        </p>
       </div>
     </div>
 
     <!-- FAQ Item 4 -->
-    <div class="border border-gray-200 rounded-lg overflow-hidden">
-      <div class="bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+    <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+      <div class="faq-header bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-medium text-black">
             How is FastShip different from traditional development agencies?
           </h3>
-          <Icon class="text-gray-400 w-6 h-6" name="bx:plus" />
+          <div class="faq-icon text-gray-400 w-6 h-6 transition-transform duration-300 flex items-center justify-center">
+            <span class="text-2xl">+</span>
+          </div>
         </div>
+      </div>
+      <div class="faq-content hidden bg-gray-50 px-6 pb-6">
+        <p class="text-black leading-relaxed">
+          FastShip stands apart through our AI-powered development approach, outcome-based pricing, and rapid delivery cycles. Unlike traditional agencies that bill by the hour and take months to deliver, we use AI agents to accelerate development, focus on tangible results, and deliver working features every 1-2 weeks. We're not just developers - we're your technology partners who understand your business goals.
+        </p>
       </div>
     </div>
 
     <!-- FAQ Item 5 -->
-    <div class="border border-gray-200 rounded-lg overflow-hidden">
-      <div class="bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+    <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+      <div class="faq-header bg-white p-6 cursor-pointer hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-medium text-black">
             Can FastShip integrate with existing enterprise systems securely?
           </h3>
-          <Icon class="text-gray-400 w-6 h-6" name="bx:plus" />
+          <div class="faq-icon text-gray-400 w-6 h-6 transition-transform duration-300 flex items-center justify-center">
+            <span class="text-2xl">+</span>
+          </div>
         </div>
+      </div>
+      <div class="faq-content hidden bg-gray-50 px-6 pb-6">
+        <p class="text-black leading-relaxed">
+          Absolutely! We specialize in secure enterprise integrations and have extensive experience working with legacy systems, ERP platforms, CRM systems, and cloud services. Our security-first approach includes end-to-end encryption, secure API development, compliance with industry standards (SOC 2, GDPR, HIPAA), and thorough security testing. We ensure your data remains protected while enabling seamless system integration.
+        </p>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all FAQ headers
+    const faqHeaders = document.querySelectorAll('.faq-header');
+    
+    // Add click event to each header
+    faqHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const faqItem = this.closest('.faq-item');
+        const content = faqItem.querySelector('.faq-content');
+        const icon = this.querySelector('.faq-icon span');
+        
+        // Toggle content visibility
+        if (content.classList.contains('hidden')) {
+          content.classList.remove('hidden');
+          icon.textContent = '×';
+        } else {
+          content.classList.add('hidden');
+          icon.textContent = '+';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .faq-content {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .faq-icon {
+    transition: transform 0.3s ease-in-out;
+  }
+</style>
