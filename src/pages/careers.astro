@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout title="Careers - FastShip">
+  <main class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-4xl mx-auto">
+          <h1 class="text-5xl font-bold text-black mb-6">
+            Join Our Rocket Team
+          </h1>
+          <p class="text-xl text-black mb-8">
+            We're building the future of software development.
+          </p>
+          <div class="flex items-center justify-center gap-4">
+            <Icon class="w-8 h-8 text-black" name="bx:rocket" />
+            <Icon class="w-8 h-8 text-black" name="bx:star" />
+            <Icon class="w-8 h-8 text-black" name="bx:rocket" />
+          </div>
+        </div>
+      </div>
+    </section>
+<br/> 
+        <!-- LinkedIn Company Page Embed -->
+        <div class="max-w-4xl mx-auto mb-12">
+          <div class="bg-gray-100 rounded-lg p-8">
+            <div class="text-center mb-6">
+              <Icon class="w-12 h-12 text-black mx-auto mb-4" name="bx:bxl-linkedin" />
+              <h3 class="text-2xl font-bold text-black mb-2">FastShip on LinkedIn</h3>
+              <p class="text-black">Follow our company page for updates and opportunities</p>
+            </div>
+            
+            <!-- LinkedIn Company Page Embed -->
+            <div class="bg-white rounded-lg p-6 shadow-sm">
+              <div class="flex items-center justify-center mb-4">
+                <Icon class="w-8 h-8 text-black mr-3" name="bx:bxl-linkedin" />
+                <span class="text-lg font-semibold text-black">FastShip</span>
+              </div>
+              <div class="text-center">
+                <p class="text-black mb-4">
+                  <a href="https://linkedin.com/company/fastship-work" 
+                     target="_blank" 
+                     rel="noopener"
+                     class="text-black underline hover:text-gray-800 transition-colors">
+                    Visit our LinkedIn Company Page
+                  </a>
+                </p>
+                <div class="bg-gray-100 rounded-lg p-4">
+                  <p class="text-sm text-black">
+                    <strong>Company:</strong> FastShip<br>
+                    <strong>Industry:</strong> Software Development<br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hiring Notice -->
+        <div class="max-w-4xl mx-auto bg-black text-white rounded-lg p-8 text-center">
+          <Icon class="w-16 h-16 text-white mx-auto mb-6" name="bx:info-circle" />
+          <h3 class="text-2xl font-bold mb-4">We Only Hire Through LinkedIn</h3>
+          <p class="text-lg mb-6">
+            All our job postings and recruitment activities happen exclusively on LinkedIn. 
+            Follow our company page to stay updated with current openings and opportunities.
+          </p>
+          <div class="flex items-center justify-center gap-4">
+            <Icon class="w-6 h-6" name="bx:check-circle" />
+            <span>Follow our company page</span>
+            <Icon class="w-6 h-6" name="bx:check-circle" />
+            <span>Get notified of new positions</span>
+            <Icon class="w-6 h-6" name="bx:check-circle" />
+            <span>Apply directly through LinkedIn</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
