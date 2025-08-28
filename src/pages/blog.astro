@@ -1,73 +1,175 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
-import Sectionhead from "@/components/sectionhead.astro";
+import { getCollection } from "astro:content";
+import SectionHead from "@/components/sectionhead.astro";
 
-// Filter blog entries with 'draft: false' (remove date restriction)
-const publishedBlogEntries = await getCollection("blog", ({ data }) => {
-  return !data.draft;
-});
+// Get all blog posts
+const posts = await getCollection("blog");
 
-// Sort content entries by publication date
-publishedBlogEntries.sort(function (a, b) {
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
+// Enhanced SEO for blog page to outrank competitors
+const seoTitle = "IT & Software Development Blog | FastShip - Expert Technology Insights";
+const seoDescription = "Stay ahead with FastShip's expert insights on IT services, software development, AI technology, digital transformation, and industry best practices. Learn from our technology experts.";
+const seoKeywords = "IT blog, software development blog, technology blog, AI blog, machine learning blog, digital transformation blog, web development blog, mobile development blog, cloud computing blog, DevOps blog, software architecture blog, programming blog, tech insights, industry best practices, FastShip blog, technology trends, software engineering blog, IT consulting blog, enterprise software blog, startup technology blog, coding blog, development tips, software design patterns, agile development blog, project management blog, technical leadership blog, FastShip, fastship.co competitor, premier IT company blog";
+
+// Structured data for blog page
+const blogStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "FastShip Technology Blog",
+  "description": "Expert insights on IT services, software development, and technology trends",
+  "url": "https://fastship.com/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "FastShip",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fastship.com/logo.jpeg"
+    }
+  },
+  "blogPost": posts.map((post, index) => ({
+    "@type": "BlogPosting",
+    "headline": post.data.title,
+    "description": post.data.snippet || post.data.description,
+    "author": {
+      "@type": "Person",
+      "name": post.data.author || "FastShip Team"
+    },
+    "datePublished": post.data.publishDate.toISOString(),
+    "dateModified": post.data.publishDate.toISOString(),
+    "url": `https://fastship.com/blog/${post.slug}`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://fastship.com/blog/${post.slug}`
+    }
+  }))
+};
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://fastship.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://fastship.com/blog"
+    }
+  ]
+};
 ---
 
-<Layout title="Blog">
+<Layout 
+  title="IT & Software Development Blog"
+  description={seoDescription}
+  keywords={seoKeywords}
+  image="/logo.jpeg"
+  structuredData={[blogStructuredData, breadcrumbData]}
+>
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
-      <Fragment slot="desc">
-        Insights, trends, and thought leadership in software development, digital transformation, and emerging technologies.
-      </Fragment>
-    </Sectionhead>
-    <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
-        {
-          publishedBlogEntries.map((blogPostEntry, index) => (
-            <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  <Picture
-                    src={blogPostEntry.data.image.src}
-                    alt={blogPostEntry.data.image.alt}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    width={800}
-                    height={600}
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md object-cover object-center bg-white"
-                  />
-                  <div>
-                    <span class="text-black uppercase tracking-wider text-sm font-medium">
-                      {blogPostEntry.data.category}
-                    </span>
-
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {blogPostEntry.data.title}
-                    </h2>
-
-                    <div class="flex gap-2 mt-3">
-                      <span class="text-black">
-                        {blogPostEntry.data.author}
-                      </span>
-                      <span class="text-black">• </span>
-                      <time
-                        class="text-black"
-                        datetime={blogPostEntry.data.publishDate.toISOString()}>
-                        {blogPostEntry.data.publishDate.toDateString()}
-                      </time>
-                    </div>
-                  </div>
-                </div>
+    <div class="mx-auto max-w-4xl mt-16">
+      <SectionHead
+        title="FastShip Technology Blog"
+        description="Expert insights, industry trends, and best practices in IT services and software development"
+      />
+      
+      <div class="grid gap-8 mt-16">
+        {posts.map((post) => (
+          <article class="bg-white rounded-lg shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center gap-4 mb-4 text-sm text-gray-600">
+              <time datetime={post.data.publishDate.toISOString()}>
+                {post.data.publishDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              {post.data.author && (
+                <span>by {post.data.author}</span>
+              )}
+            </div>
+            
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 hover:text-blue-600 transition-colors">
+              <a href={`/blog/${post.slug}`}>
+                {post.data.title}
               </a>
-            </li>
-          ))
-        }
-      </ul>
-    </main>
+            </h2>
+            
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              {post.data.snippet || post.data.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+              {post.data.tags && post.data.tags.map((tag) => (
+                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <a 
+              href={`/blog/${post.slug}`}
+              class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
+            >
+              Read More
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+      
+      <!-- Blog Categories and Topics -->
+      <div class="mt-16 bg-gray-50 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">Popular Topics</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="/blog?tag=ai" class="bg-white p-4 rounded-lg text-center hover:shadow-md transition-shadow">
+            <h4 class="font-semibold text-gray-900">AI & Machine Learning</h4>
+            <p class="text-sm text-gray-600">Latest developments</p>
+          </a>
+          <a href="/blog?tag=web-development" class="bg-white p-4 rounded-lg text-center hover:shadow-md transition-shadow">
+            <h4 class="font-semibold text-gray-900">Web Development</h4>
+            <p class="text-sm text-gray-600">Modern frameworks</p>
+          </a>
+          <a href="/blog?tag=cloud" class="bg-white p-4 rounded-lg text-center hover:shadow-md transition-shadow">
+            <h4 class="font-semibold text-gray-900">Cloud Computing</h4>
+            <p class="text-sm text-gray-600">AWS, Azure, GCP</p>
+          </a>
+          <a href="/blog?tag=devops" class="bg-white p-4 rounded-lg text-center hover:shadow-md transition-shadow">
+            <h4 class="font-semibold text-gray-900">DevOps</h4>
+            <p class="text-sm text-gray-600">CI/CD & automation</p>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Newsletter Signup -->
+      <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white text-center">
+        <h3 class="text-2xl font-bold mb-4">Stay Updated with Tech Trends</h3>
+        <p class="text-lg mb-6">
+          Get the latest insights on IT services, software development, and technology trends delivered to your inbox.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+            required
+          />
+          <button 
+            type="submit" 
+            class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
   </Container>
 </Layout>

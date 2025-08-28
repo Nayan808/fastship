@@ -1,83 +1,320 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Icon } from 'astro-icon/components';
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import SectionHead from "@/components/sectionhead.astro";
+
+// Enhanced SEO for careers page to outrank competitors
+const seoTitle = "Careers at FastShip - Join Our Elite Engineering Team | IT Services & Software Development Jobs";
+const seoDescription = "Join FastShip's elite engineering team and work on cutting-edge technology projects. We're hiring software developers, AI engineers, DevOps specialists, and more. Competitive salaries, remote work, and growth opportunities.";
+const seoKeywords = "careers at FastShip, FastShip jobs, software development jobs, IT services careers, AI engineer jobs, DevOps jobs, web developer jobs, mobile developer jobs, software engineer jobs, technology careers, remote work jobs, engineering jobs, software development careers, IT consulting jobs, technology company jobs, startup jobs, enterprise software jobs, FastShip, fastship.co competitor, premier IT company careers";
+
+// Structured data for careers page
+const careersStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Software Development and IT Services Careers",
+  "description": "Join FastShip's elite engineering team and work on cutting-edge technology projects",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "FastShip",
+    "url": "https://fastship.com",
+    "logo": "https://fastship.com/logo.jpeg"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    }
+  },
+  "employmentType": ["FULL_TIME", "CONTRACT", "REMOTE"],
+  "datePosted": "2024-12-19",
+  "validThrough": "2025-12-19"
+};
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://fastship.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Careers",
+      "item": "https://fastship.com/careers"
+    }
+  ]
+};
 ---
 
-<Layout title="Careers - FastShip">
-  <main class="min-h-screen bg-white">
-    <!-- Hero Section -->
-    <section class="py-20 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-5xl font-bold text-black mb-6">
-            Join Our Rocket Team
-          </h1>
-          <p class="text-xl text-black mb-8">
-            We're building the future of software development.
-          </p>
-          <div class="flex items-center justify-center gap-4">
-            <Icon class="w-8 h-8 text-black" name="bx:rocket" />
-            <Icon class="w-8 h-8 text-black" name="bx:star" />
-            <Icon class="w-8 h-8 text-black" name="bx:rocket" />
+<Layout 
+  title="Careers at FastShip - Join Our Elite Team"
+  description={seoDescription}
+  keywords={seoKeywords}
+  image="/logo.jpeg"
+  structuredData={[careersStructuredData, breadcrumbData]}
+>
+  <Container>
+    <div class="mx-auto max-w-6xl mt-16">
+      <SectionHead
+        title="Join Our Elite Engineering Team"
+        description="Work on cutting-edge technology projects and help businesses achieve 10x faster results with AI-powered solutions"
+      />
+      
+      <!-- Why Work at FastShip -->
+      <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white">
+        <h2 class="text-3xl font-bold mb-6 text-center">Why Work at FastShip?</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Cutting-Edge Technology</h3>
+            <p class="text-blue-100">Work with the latest AI, ML, and cloud technologies</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Elite Team</h3>
+            <p class="text-blue-100">Collaborate with top-tier engineers and developers</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Growth Opportunities</h3>
+            <p class="text-blue-100">Rapid career advancement and skill development</p>
           </div>
         </div>
       </div>
-    </section>
-<br/> 
-        <!-- LinkedIn Company Page Embed -->
-        <div class="max-w-4xl mx-auto mb-12">
-          <div class="bg-gray-100 rounded-lg p-8">
-            <div class="text-center mb-6">
-              <Icon class="w-12 h-12 text-black mx-auto mb-4" name="bx:bxl-linkedin" />
-              <h3 class="text-2xl font-bold text-black mb-2">FastShip on LinkedIn</h3>
-              <p class="text-black">Follow our company page for updates and opportunities</p>
-            </div>
-            
-            <!-- LinkedIn Company Page Embed -->
-            <div class="bg-white rounded-lg p-6 shadow-sm">
-              <div class="flex items-center justify-center mb-4">
-                <Icon class="w-8 h-8 text-black mr-3" name="bx:bxl-linkedin" />
-                <span class="text-lg font-semibold text-black">FastShip</span>
-              </div>
-              <div class="text-center">
-                <p class="text-black mb-4">
-                  <a href="https://linkedin.com/company/fastship-work" 
-                     target="_blank" 
-                     rel="noopener"
-                     class="text-black underline hover:text-gray-800 transition-colors">
-                    Visit our LinkedIn Company Page
-                  </a>
+      
+      <!-- Open Positions -->
+      <div class="mt-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Open Positions</h2>
+        <div class="grid gap-6">
+          <!-- Senior Software Engineer -->
+          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Senior Software Engineer</h3>
+                <p class="text-gray-600 mb-4">
+                  Lead development of complex software solutions using modern technologies and best practices. 
+                  Mentor junior developers and contribute to architectural decisions.
                 </p>
-                <div class="bg-gray-100 rounded-lg p-4">
-                  <p class="text-sm text-black">
-                    <strong>Company:</strong> FastShip<br>
-                    <strong>Industry:</strong> Software Development<br>
-                  </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Full-time</span>
+                  <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Remote</span>
+                  <span class="bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full">Senior Level</span>
                 </div>
               </div>
+              <a href="#apply" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                Apply Now
+              </a>
+            </div>
+          </div>
+          
+          <!-- AI/ML Engineer -->
+          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">AI/ML Engineer</h3>
+                <p class="text-gray-600 mb-4">
+                  Develop and implement AI-powered solutions, machine learning models, and intelligent systems 
+                  that drive business value and innovation.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Full-time</span>
+                  <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Remote</span>
+                  <span class="bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Mid-Senior</span>
+                </div>
+              </div>
+              <a href="#apply" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                Apply Now
+              </a>
+            </div>
+          </div>
+          
+          <!-- DevOps Engineer -->
+          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">DevOps Engineer</h3>
+                <p class="text-gray-600 mb-4">
+                  Build and maintain CI/CD pipelines, cloud infrastructure, and automation solutions. 
+                  Ensure high availability and performance of our systems.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Full-time</span>
+                  <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Remote</span>
+                  <span class="bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Mid-Senior</span>
+                </div>
+              </div>
+              <a href="#apply" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                Apply Now
+              </a>
+            </div>
+          </div>
+          
+          <!-- Frontend Developer -->
+          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Frontend Developer</h3>
+                <p class="text-gray-600 mb-4">
+                  Create beautiful, responsive user interfaces using modern frameworks like React, Vue, or Angular. 
+                  Focus on user experience and performance optimization.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Full-time</span>
+                  <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Remote</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full">Junior-Mid</span>
+                </div>
+              </div>
+              <a href="#apply" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                Apply Now
+              </a>
+            </div>
+          </div>
+          
+          <!-- Backend Developer -->
+          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Backend Developer</h3>
+                <p class="text-gray-600 mb-4">
+                  Build scalable backend services, APIs, and database solutions. Work with Node.js, Python, 
+                  Java, or .NET to create robust server-side applications.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Full-time</span>
+                  <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Remote</span>
+                  <span class="bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Mid-Senior</span>
+                </div>
+              </div>
+              <a href="#apply" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                Apply Now
+              </a>
             </div>
           </div>
         </div>
-
-        <!-- Hiring Notice -->
-        <div class="max-w-4xl mx-auto bg-black text-white rounded-lg p-8 text-center">
-          <Icon class="w-16 h-16 text-white mx-auto mb-6" name="bx:info-circle" />
-          <h3 class="text-2xl font-bold mb-4">We Only Hire Through LinkedIn</h3>
-          <p class="text-lg mb-6">
-            All our job postings and recruitment activities happen exclusively on LinkedIn. 
-            Follow our company page to stay updated with current openings and opportunities.
-          </p>
-          <div class="flex items-center justify-center gap-4">
-            <Icon class="w-6 h-6" name="bx:check-circle" />
-            <span>Follow our company page</span>
-            <Icon class="w-6 h-6" name="bx:check-circle" />
-            <span>Get notified of new positions</span>
-            <Icon class="w-6 h-6" name="bx:check-circle" />
-            <span>Apply directly through LinkedIn</span>
+      </div>
+      
+      <!-- Benefits -->
+      <div class="mt-16 bg-gray-50 rounded-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Benefits & Perks</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h4 class="font-semibold text-gray-900 mb-2">Competitive Salary</h4>
+            <p class="text-gray-600">Above-market compensation with performance bonuses</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h4 class="font-semibold text-gray-900 mb-2">Remote Work</h4>
+            <p class="text-gray-600">Work from anywhere with flexible hours</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h4 class="font-semibold text-gray-900 mb-2">Health Insurance</h4>
+            <p class="text-gray-600">Comprehensive health, dental, and vision coverage</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h4 class="font-semibold text-gray-900 mb-2">Learning Budget</h4>
+            <p class="text-gray-600">Annual budget for courses, conferences, and certifications</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h4 class="font-semibold text-gray-900 mb-2">Stock Options</h4>
+            <p class="text-gray-600">Ownership stake in the company's success</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h4 class="font-semibold text-gray-900 mb-2">Team Events</h4>
+            <p class="text-gray-600">Regular team building and social activities</p>
           </div>
         </div>
       </div>
-    </section>
-
-  </main>
+      
+      <!-- Application Form -->
+      <div id="apply" class="mt-16 bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Apply for a Position</h2>
+        <form class="max-w-2xl mx-auto space-y-6">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </div>
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </div>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          </div>
+          
+          <div>
+            <label for="position" class="block text-sm font-medium text-gray-700 mb-2">Position *</label>
+            <select id="position" name="position" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              <option value="">Select a position</option>
+              <option value="senior-software-engineer">Senior Software Engineer</option>
+              <option value="ai-ml-engineer">AI/ML Engineer</option>
+              <option value="devops-engineer">DevOps Engineer</option>
+              <option value="frontend-developer">Frontend Developer</option>
+              <option value="backend-developer">Backend Developer</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="experience" class="block text-sm font-medium text-gray-700 mb-2">Years of Experience *</label>
+            <select id="experience" name="experience" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              <option value="">Select experience level</option>
+              <option value="0-1">0-1 years</option>
+              <option value="1-3">1-3 years</option>
+              <option value="3-5">3-5 years</option>
+              <option value="5-8">5-8 years</option>
+              <option value="8+">8+ years</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Cover Letter *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell us why you'd like to join FastShip and what you can bring to our team..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+          </div>
+          
+          <div>
+            <label for="resume" class="block text-sm font-medium text-gray-700 mb-2">Resume/CV *</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          </div>
+          
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            Submit Application
+          </button>
+        </form>
+      </div>
+      
+      <!-- Call to Action -->
+      <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white text-center">
+        <h3 class="text-2xl font-bold mb-4">Don't See the Right Position?</h3>
+        <p class="text-lg mb-6">
+          We're always looking for talented individuals to join our team. Send us your resume and we'll keep you in mind for future opportunities.
+        </p>
+        <a href="/contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </Container>
 </Layout>

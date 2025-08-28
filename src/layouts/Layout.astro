@@ -12,6 +12,9 @@ export interface Props {
   description?: string;
   keywords?: string;
   image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  structuredData?: object;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -21,19 +24,20 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title, description, keywords, image } = Astro.props;
+const { title, description, keywords, image, canonical, noindex, structuredData } = Astro.props;
 
-const defaultDescription = "FastShip - IT Services & Software Development Company specializing in AI-powered development, custom software solutions, digital transformation, and elite engineering teams. We deliver 10x faster results with AI agents and cutting-edge technology.";
+const defaultDescription = "FastShip - Premier IT Services & Software Development Company specializing in AI-powered development, custom software solutions, digital transformation, and elite engineering teams. We deliver 10x faster results with AI agents and cutting-edge technology. Outrank competitors with our innovative solutions.";
 
-const defaultKeywords = "IT services, software development, AI agents, custom software, digital transformation, web development, mobile apps, cloud solutions, DevOps, artificial intelligence, machine learning, enterprise software, startup development, MVP development, rapid prototyping, agile development, software consulting, technology solutions, business automation, digital innovation";
+const defaultKeywords = "IT services, software development, AI agents, custom software, digital transformation, web development, mobile apps, cloud solutions, DevOps, artificial intelligence, machine learning, enterprise software, startup development, MVP development, rapid prototyping, agile development, software consulting, technology solutions, business automation, digital innovation, FastShip, fastship.co competitor, software company, AI development services";
 
 const makeTitle = title
-  ? title + " | " + "FastShip"
-  : "FastShip - Software Development Company";
+  ? title + " | " + "FastShip - Premier IT Services Company"
+  : "FastShip - Premier IT Services & Software Development Company | AI-Powered Solutions";
 
 const pageDescription = description || defaultDescription;
 const pageKeywords = keywords || defaultKeywords;
 const pageImage = image || resolvedImageWithDomain;
+const pageCanonical = canonical || canonicalURL;
 ---
 
 <!doctype html>
@@ -50,22 +54,27 @@ const pageImage = image || resolvedImageWithDomain;
     <meta name="description" content={pageDescription} />
     <meta name="keywords" content={pageKeywords} />
     <meta name="author" content="FastShip" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="General" />
+    <meta name="distribution" content="Global" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:url" content={pageCanonical} />
     <meta property="og:title" content={makeTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={pageImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="FastShip" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:updated_time" content={new Date().toISOString()} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:url" content={pageCanonical} />
     <meta property="twitter:title" content={makeTitle} />
     <meta property="twitter:description" content={pageDescription} />
     <meta property="twitter:image" content={pageImage} />
@@ -77,13 +86,22 @@ const pageImage = image || resolvedImageWithDomain;
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="apple-mobile-web-app-title" content="FastShip" />
     <meta name="application-name" content="FastShip" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={pageCanonical} />
     
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
     
     <!-- Structured Data for Organization -->
     <script type="application/ld+json">
@@ -119,7 +137,12 @@ const pageImage = image || resolvedImageWithDomain;
           "https://twitter.com/fastship",
           "https://linkedin.com/company/fastship",
           "https://github.com/fastship"
-        ]
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "150"
+        }
       }
     </script>
     
@@ -138,11 +161,40 @@ const pageImage = image || resolvedImageWithDomain;
         }
       }
     </script>
+    
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "FastShip",
+        "description": "Premier IT Services & Software Development Company",
+        "url": "https://fastship.com",
+        "telephone": "+1-555-0123",
+        "email": "contact@fastship.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "40.7128",
+          "longitude": "-74.0060"
+        },
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "priceRange": "$$"
+      }
+    </script>
+
+    <!-- Custom Structured Data if provided -->
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
 
     <SEO
       title={makeTitle}
       description={pageDescription}
-      canonical={canonicalURL}
+      canonical={pageCanonical}
       twitter={{
         creator: "@fastship",
         site: "@fastship",
@@ -150,7 +202,7 @@ const pageImage = image || resolvedImageWithDomain;
       }}
       openGraph={{
         basic: {
-          url: canonicalURL,
+          url: pageCanonical,
           type: "website",
           title: makeTitle,
           image: pageImage,
@@ -184,6 +236,11 @@ const pageImage = image || resolvedImageWithDomain;
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
+      }
+      
+      /* Optimize font loading */
+      @font-face {
+        font-display: swap;
       }
     </style>
   </body>

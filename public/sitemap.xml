@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fastship.com/</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://fastship.work/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://fastship.com/about</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://fastship.work/about</loc>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fastship.com/contact</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fastship.com/services</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fastship.com/blog</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://fastship.work/services</loc>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://fastship.work/contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fastship.com/blog/complete-guide-fullstack-development</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://fastship.work/careers</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fastship.com/blog/essential-data-structures-algorithms</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://fastship.work/blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fastship.com/blog/how-to-become-frontend-master</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://fastship.work/blog/ai-ml-development-guide</loc>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fastship.work/blog/complete-guide-fullstack-development</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fastship.work/blog/introduction-to-data-structures-algorithms</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

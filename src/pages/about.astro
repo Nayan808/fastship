@@ -1,65 +1,246 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
-import Sectionhead from "@/components/sectionhead.astro";
+import SectionHead from "@/components/sectionhead.astro";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+// Enhanced SEO for about page to outrank competitors
+const seoTitle = "About FastShip - Premier IT Services & Software Development Company | Our Story";
+const seoDescription = "Learn about FastShip's journey as a premier IT services and software development company. Discover our mission, values, team expertise, and commitment to delivering 10x faster results with AI-powered solutions.";
+const seoKeywords = "about FastShip, FastShip company, IT services company, software development company, technology company history, FastShip mission, FastShip values, FastShip team, software development experts, IT consulting company, technology solutions provider, AI development company, digital transformation company, enterprise software company, startup technology partner, software engineering company, IT services provider, technology consulting, software development expertise, FastShip leadership, company culture, technology innovation, software development process, quality assurance, client success stories, industry experience, technology partnerships, FastShip, fastship.co competitor, premier IT company about";
 
-// SEO-optimized content for about page
-const seoTitle = "About FastShip - IT Services & Software Development Company";
-const seoDescription = "Learn about FastShip, a leading IT services company specializing in AI-powered software development, digital transformation, and innovative technology solutions. Discover our mission to deliver exceptional value through cutting-edge technology.";
-const seoKeywords = "about FastShip, IT services company, software development company, AI-powered development, digital transformation, technology solutions, custom software development, enterprise solutions, startup development, MVP development, rapid prototyping, agile development, software consulting, technology innovation, business automation, digital economy, FastShip mission, FastShip approach, why choose FastShip";
+// Structured data for about page
+const aboutStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About FastShip",
+  "description": "Learn about FastShip's journey as a premier IT services and software development company",
+  "url": "https://fastship.com/about",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "FastShip",
+    "foundingDate": "2024",
+    "description": "Premier IT Services & Software Development Company specializing in AI-powered development and custom software solutions",
+    "mission": "To deliver 10x faster results with AI agents and cutting-edge technology solutions",
+    "values": [
+      "Innovation",
+      "Excellence",
+      "Client Success",
+      "Continuous Learning",
+      "Quality"
+    ]
+  }
+};
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://fastship.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About",
+      "item": "https://fastship.com/about"
+    }
+  ]
+};
 ---
 
 <Layout 
-  title="About"
+  title="About FastShip - Premier IT Services Company"
   description={seoDescription}
   keywords={seoKeywords}
   image="/logo.jpeg"
+  structuredData={[aboutStructuredData, breadcrumbData]}
 >
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">About FastShip</Fragment>
-      <Fragment slot="desc">Your trusted partner in digital transformation and software innovation.</Fragment>
-    </Sectionhead>
-
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Pioneering the Future of Technology
-      </h2>
-      <p class="text-lg leading-relaxed text-black">
-        FastShip is a leading IT service firm dedicated to transforming businesses through innovative technology solutions. 
-        We specialize in custom software development, digital transformation, and cutting-edge technology services that 
-        help organizations thrive in the digital economy.
-      </p>
-      <p class="text-lg leading-relaxed text-black mt-4">
-        Our mission is to deliver exceptional value through technology that not only meets current needs but anticipates 
-        future challenges. We believe in building lasting partnerships with our clients, understanding their unique 
-        business requirements, and delivering solutions that drive measurable results.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
-      <div class="bg-gray-50 p-8 rounded-lg">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Our Approach</h3>
-        <p class="text-black">
-          We follow an agile, collaborative approach that puts your business needs first. From initial consultation 
-          to final deployment and ongoing support, we work closely with you to ensure every solution aligns with 
-          your strategic objectives.
-        </p>
+    <div class="mx-auto max-w-4xl mt-16">
+      <SectionHead
+        title="About FastShip"
+        description="Our journey to becoming a premier IT services and software development company"
+      />
+      
+      <!-- Company Story -->
+      <div class="mt-16 bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
+        <div class="prose prose-lg text-gray-700">
+          <p class="mb-6">
+            FastShip was founded with a simple yet powerful mission: to revolutionize how businesses approach 
+            software development and IT services. We recognized that traditional development cycles were too slow 
+            and expensive for today's fast-paced business environment.
+          </p>
+          <p class="mb-6">
+            Our journey began with a team of passionate engineers and technology leaders who believed that 
+            combining artificial intelligence with human expertise could deliver unprecedented results. We've 
+            proven that with the right approach, businesses can achieve 10x faster development cycles while 
+            maintaining the highest quality standards.
+          </p>
+          <p>
+            Today, FastShip stands as a premier IT services company, helping organizations of all sizes 
+            transform their digital capabilities and stay ahead of the competition through innovative 
+            technology solutions.
+          </p>
+        </div>
       </div>
-      <div class="bg-gray-50 p-8 rounded-lg">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Why Choose FastShip</h3>
-        <p class="text-black">
-          With years of experience across diverse industries, our team brings deep technical expertise and 
-          business acumen to every project. We're committed to innovation, quality, and delivering solutions 
-          that exceed expectations.
+
+      <!-- Mission & Values -->
+      <div class="mt-16 grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+          <p class="text-gray-700 leading-relaxed">
+            To empower businesses with cutting-edge technology solutions that drive innovation, 
+            efficiency, and growth. We deliver 10x faster results through AI-powered development 
+            and elite engineering expertise.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+          <p class="text-gray-700 leading-relaxed">
+            To be the world's leading IT services company, known for delivering exceptional value, 
+            innovative solutions, and transformative results that help businesses thrive in the 
+            digital age.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <div class="mt-16 bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Our Core Values</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-2">Innovation</h4>
+            <p class="text-gray-600">Constantly pushing boundaries and exploring new technologies</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-2">Excellence</h4>
+            <p class="text-gray-600">Delivering the highest quality solutions and service</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-2">Client Success</h4>
+            <p class="text-gray-600">Your success is our success - we're committed to your growth</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Choose FastShip -->
+      <div class="mt-16 bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose FastShip?</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">10x Faster Development</h4>
+                <p class="text-gray-600">Our AI-powered approach delivers results 10x faster than traditional methods</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Elite Engineering Team</h4>
+                <p class="text-gray-600">Hand-picked experts with proven track records in delivering complex solutions</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">AI-Powered Solutions</h4>
+                <p class="text-gray-600">Cutting-edge AI and machine learning technologies integrated into every solution</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Proven Track Record</h4>
+                <p class="text-gray-600">Successfully delivered hundreds of projects across various industries</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">24/7 Support</h4>
+                <p class="text-gray-600">Round-the-clock support and maintenance for all our solutions</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Competitive Pricing</h4>
+                <p class="text-gray-600">Premium quality solutions at competitive market rates</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white text-center">
+        <h3 class="text-2xl font-bold mb-4">Ready to Work with FastShip?</h3>
+        <p class="text-lg mb-6">
+          Let's discuss how our expertise can help you achieve your technology goals and stay ahead of the competition.
         </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Get Started Today
+          </a>
+          <a href="/services" class="bg-transparent text-white px-8 py-3 rounded-lg font-semibold border border-white hover:bg-white hover:text-blue-600 transition-colors">
+            View Our Services
+          </a>
+        </div>
       </div>
     </div>
   </Container>
