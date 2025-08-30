@@ -3,31 +3,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer class="mt-20 border-t border-gray-200">
-  <!-- Newsletter Section -->
-  <div class="py-16 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-8">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 class="text-3xl font-bold text-gray-900 mb-4">
-            Ready to Launch?
-          </h3>
-          <p class="text-lg text-black mb-6">
-            Let's discuss how FastShip can transform your business with innovative technology solutions.
-          </p>
-          <a 
-            href="https://calendly.com/contact-fastship/30min?back=1&month=2025-08"
-            target="_blank"
-            rel="noopener"
-            class="cta-button book-call-btn inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-xl font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
-            <Icon class="w-5 h-5" name="bx:rocket" />
-            Book a Call
-          </a>
-        </div>
-        
 
-      </div>
-    </div>
-  </div>
   
   <!-- Main Footer -->
   <div class="py-12 bg-white">
@@ -80,9 +56,15 @@ import { Icon } from "astro-icon/components";
         <p class="text-black text-sm">
           © 2025 FastShip. All rights reserved.
         </p>
-        <p class="text-black text-sm mt-2 md:mt-0">
-          We don't just ship code, We launch Rocket 🚀
-        </p>
+        <div class="flex flex-col items-center md:items-end mt-2 md:mt-0">
+          <!-- Product Hunt Upvote Badge -->
+          <a href="https://www.producthunt.com/products/fastship?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-fastship" target="_blank" class="mb-2">
+            <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010555&theme=dark&t=1756537805378" alt="FastShip - We don't just ship code, We launch Rocket 🚀 | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+          </a>
+          <p class="text-black text-sm">
+            We don't just ship code, We launch Rocket 🚀
+          </p>
+        </div>
       </div>
     </div>
   </div>
