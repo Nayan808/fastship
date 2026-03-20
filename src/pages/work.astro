@@ -1,7 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Container from "@/components/container.astro";
-import SectionHead from "@/components/sectionhead.astro";
 
 // SEO metadata
 const seoTitle = "Our Work - Client Projects & Case Studies";
@@ -28,57 +26,69 @@ const breadcrumbData = {
 };
 
 // ─── PROJECT DATA ───────────────────────────────────────────
-// Update these entries with your real thumbnails and links later.
 const projects = [
   {
     title: "SuperLearn",
     description: "AI-powered learning platform acquired by Zupee. Intelligent content delivery with adaptive learning paths.",
     tag: "Acquired by Zupee",
-    highlight: true,
+    category: "AI · EdTech",
     liveLink: "https://superlearn.in",
     image: "/work/superlearn.png",
+    accent: "59,130,246",   // blue
   },
   {
     title: "Deepfake Detection",
-    description: "Advanced deepfake detection system built for a Nigerian client. Real-time video & image analysis using cutting-edge ML models.",
+    description: "Advanced deepfake detection system. Real-time video & image analysis using cutting-edge ML models.",
     tag: "AI / ML",
+    category: "AI · Security",
     liveLink: "https://deepfakesweb.com",
     image: "/work/deepfake.png",
+    accent: "239,68,68",    // red
   },
   {
     title: "CarrotFoodDelivery",
     description: "End-to-end food delivery product — from ordering UX to driver logistics and real-time tracking.",
     tag: "Product",
+    category: "FoodTech · Product",
     liveLink: "https://onlycheat.com",
     image: "/work/carrot.png",
+    accent: "251,146,60",   // orange
   },
   {
     title: "8prompt",
-    description: "A product in the influencer marketing space. Image generation and creative workflow tooling for brands.",
+    description: "Image generation and creative workflow tooling for brands in the influencer marketing space.",
     tag: "Influencer Tech",
+    category: "Marketing · AI",
     liveLink: "https://8prompt.app",
     image: "/work/8prompt.png",
+    accent: "168,85,247",   // purple
   },
   {
     title: "What My Rank",
     description: "GMV auditor tool that tracks and benchmarks marketplace seller rankings and performance metrics.",
     tag: "GMV Auditor",
+    category: "SaaS · Analytics",
     liveLink: "https://whatmyrank.com",
     image: "/work/whatmyrank.png",
+    accent: "0,214,143",    // green
   },
   {
-    title: "Clinic Management & Automation",
+    title: "Clinic Management",
     description: "Healthcare automation platform streamlining patient management, appointments, and clinical workflows.",
     tag: "Healthcare",
+    category: "HealthTech · SaaS",
     liveLink: "https://fastship.work",
     image: "/work/clinic.png",
+    accent: "232,121,249",  // pink
   },
   {
-    title: "Voice Agents & Video Agents",
+    title: "Voice & Video Agents",
     description: "AI-driven voice and video automation agents deployed across multiple business verticals.",
     tag: "Automation",
+    category: "AI · Automation",
     liveLink: "https://fastship.work",
     image: "/work/voiceagents.png",
+    accent: "56,189,248",   // cyan
   },
 ];
 ---
@@ -90,119 +100,601 @@ const projects = [
   image="/logo.jpeg"
   structuredData={breadcrumbData}
 >
-  <Container>
-    <div class="mx-auto max-w-6xl mt-16 mb-20">
-      <SectionHead
-        title="Our Work"
-        description="A selection of projects we've shipped for clients — from AI products to full-scale platforms."
-      />
+  <section class="work-carousel-page" id="work-carousel-page">
+    <!-- Ambient glow blobs -->
+    <div class="wc-glow wc-g1"></div>
+    <div class="wc-glow wc-g2"></div>
 
-      <!-- Project Grid -->
-      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <div class:list={[
-            "project-card group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
-            index === projects.length - 1 && projects.length % 3 === 1 && "lg:col-start-2",
-            index === projects.length - 1 && projects.length % 2 === 1 && "sm:col-start-1 sm:col-end-3 sm:max-w-md sm:mx-auto lg:col-end-auto lg:max-w-none"
-          ]}>
-            <!-- Thumbnail -->
-            <div class="relative h-52 w-full overflow-hidden bg-gray-100">
-              <img
-                src={project.image}
-                alt={`${project.title} thumbnail`}
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-              />
-              <!-- Fallback placeholder shown when image fails to load -->
-              <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 text-white">
-                <div class="text-center">
-                  <svg class="mx-auto mb-2 h-10 w-10 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span class="text-sm font-medium opacity-60">{project.title}</span>
+    <!-- Page Title -->
+    <h1 class="wc-page-title">Our Work</h1>
+
+    <!-- 3D Carousel -->
+    <div class="wc-tilt-wrap">
+      <div class="wc-scene">
+        <div class="wc-carousel" id="wc-carousel">
+          {projects.map((project, i) => (
+            <div
+              class="wc-cell"
+              data-accent={project.accent}
+              data-link={project.liveLink}
+              data-index={i}
+            >
+              <div class="wc-screen">
+                <img
+                  class="wc-screen-bg"
+                  src={project.image}
+                  alt={`${project.title} screenshot`}
+                  loading="lazy"
+                />
+                <div class="wc-screen-overlay"></div>
+                <div class="wc-screen-nav">
+                  <span class="wc-screen-logo">{project.title}</span>
+                  <div class="wc-nav-dots"><span></span><span></span><span></span></div>
+                </div>
+                <div class="wc-screen-content">
+                  <div class="wc-screen-tag">{project.category}</div>
+                  <div class="wc-screen-title">{project.title}</div>
+                  <div class="wc-screen-desc">{project.description}</div>
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="wc-screen-cta"
+                  >
+                    View project →
+                  </a>
                 </div>
               </div>
-
-              <!-- Tag badge -->
-              {project.tag && (
-                <span class:list={[
-                  "absolute top-3 right-3 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm",
-                  project.highlight
-                    ? "bg-gradient-to-r from-amber-400 to-yellow-300 text-gray-900 shadow-lg shadow-amber-400/30 ring-1 ring-amber-300/50"
-                    : "bg-black/70 text-white"
-                ]}>
-                  {project.highlight && "🏆 "}{project.tag}
-                </span>
-              )}
+              <div class="wc-cell-label">
+                <span class="wc-label-name">{project.title}</span>
+                <span class="wc-label-tag">{project.tag}</span>
+              </div>
             </div>
-
-            <!-- Card body -->
-            <div class="flex flex-1 flex-col p-6">
-              <h3 class="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
-                {project.title}
-              </h3>
-              <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
-                {project.description}
-              </p>
-
-              <!-- Live link button -->
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mt-5 inline-flex items-center gap-2 self-start rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-black hover:shadow-md active:scale-[0.97]"
-              >
-                Live Link
-                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Call to Action -->
-      <div class="mt-20 rounded-2xl bg-gray-900 p-10 text-center text-white">
-        <h3 class="text-2xl font-bold mb-3">Have a project in mind?</h3>
-        <p class="text-gray-300 mb-6 max-w-lg mx-auto">
-          Let's build something remarkable together. We'd love to hear about your next big idea.
-        </p>
-        <a
-          href="https://calendly.com/contact-fastship/30min?back=1&month=2025-08"
-          target="_blank"
-          rel="noopener"
-          class="inline-block rounded-lg bg-white px-8 py-3 font-semibold text-gray-900 transition-colors hover:bg-gray-100"
-        >
-          Book a Call
-        </a>
+          ))}
+        </div>
       </div>
     </div>
-  </Container>
+
+    <!-- Controls -->
+    <div class="wc-controls">
+      <button class="wc-ctrl-btn" id="wc-prev" title="Previous" aria-label="Previous project">&#8593;</button>
+      <div class="wc-pips-wrap">
+        <div class="wc-pips" id="wc-pips"></div>
+        <div class="wc-progress-bar"><div class="wc-progress-fill" id="wc-pfill"></div></div>
+      </div>
+      <button class="wc-ctrl-btn" id="wc-next" title="Next" aria-label="Next project">&#8595;</button>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="wc-cta-section">
+      <h3 class="wc-cta-title">Have a project in mind?</h3>
+      <p class="wc-cta-desc">Let's build something remarkable together. We'd love to hear about your next big idea.</p>
+      <a
+        href="https://calendly.com/contact-fastship/30min?back=1&month=2025-08"
+        target="_blank"
+        rel="noopener"
+        class="wc-cta-btn"
+      >
+        Book a Call
+      </a>
+    </div>
+  </section>
 </Layout>
 
-<style>
-  /* Subtle entrance animation for cards */
-  .project-card {
-    animation: cardFadeIn 0.5s ease-out both;
-  }
-  .project-card:nth-child(1) { animation-delay: 0.05s; }
-  .project-card:nth-child(2) { animation-delay: 0.10s; }
-  .project-card:nth-child(3) { animation-delay: 0.15s; }
-  .project-card:nth-child(4) { animation-delay: 0.20s; }
-  .project-card:nth-child(5) { animation-delay: 0.25s; }
-  .project-card:nth-child(6) { animation-delay: 0.30s; }
-  .project-card:nth-child(7) { animation-delay: 0.35s; }
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-  @keyframes cardFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+  /* ── Work Carousel Page ─────────────────────────────────── */
+  .work-carousel-page {
+    position: relative;
+    background: #ffffff;
+    color: #111827;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 20px 60px;
+    overflow: hidden;
+  }
+
+  /* Glow blobs */
+  .wc-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wc-g1 { width: 700px; height: 700px; background: #3a6fff; top: -250px; left: -250px; }
+  .wc-g2 { width: 500px; height: 500px; background: #ff4433; bottom: -200px; right: -180px; }
+
+  /* Page title */
+  .wc-page-title {
+    font-family: 'Bricolage Grotesque Variable', 'Inter Variable', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #111827;
+    text-align: center;
+    margin-bottom: 8px;
+    z-index: 10;
+    position: relative;
+  }
+
+  /* Header */
+  .wc-header {
+    text-align: center;
+    margin-bottom: 100px;
+    z-index: 10;
+    position: relative;
+  }
+  .wc-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 12px;
+  }
+  .wc-heading {
+    font-family: 'Bricolage Grotesque Variable', 'Inter Variable', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #111827;
+    line-height: 1.1;
+    margin-bottom: 0;
+  }
+  .wc-subhead {
+    font-size: 14px;
+    color: #6b7280;
+    max-width: 420px;
+    line-height: 1.75;
+    margin: 0 auto;
+  }
+
+  /* Tilt wrapper — 3D perspective */
+  .wc-tilt-wrap {
+    transform-style: preserve-3d;
+    transform: rotateX(10deg) rotateY(-20deg) rotateZ(-3deg);
+    width: 580px;
+    height: 380px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .wc-scene {
+    perspective: 1600px;
+    perspective-origin: 50% 50%;
+    width: 580px;
+    height: 380px;
+    position: relative;
+  }
+
+  /* Vertical carousel (rotates on X axis) */
+  .wc-carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Individual cell */
+  .wc-cell {
+    position: absolute;
+    width: 540px;
+    height: 340px;
+    left: 20px;
+    top: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    cursor: pointer;
+    backface-visibility: hidden;
+    /* Non-active cards are blurred */
+    filter: blur(5px);
+    opacity: 0;
+    transition: filter 0.8s cubic-bezier(0.16,1,0.3,1),
+                opacity 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  /* Active card is sharp and fully visible */
+  .wc-cell.active {
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  /* Screen container */
+  .wc-screen {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .wc-screen-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .wc-screen-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(150deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.18) 55%, transparent 100%);
+    z-index: 2;
+  }
+
+  /* Nav bar inside card */
+  .wc-screen-nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+  }
+  .wc-screen-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.02em;
+  }
+  .wc-nav-dots { display: flex; gap: 5px; }
+  .wc-nav-dots span {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.32);
+  }
+
+  /* Content overlay — slides up when active */
+  .wc-screen-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px 22px 26px;
+    z-index: 5;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.75s cubic-bezier(0.16,1,0.3,1) 0.2s,
+                opacity   0.55s ease 0.2s;
+  }
+  .wc-cell.active .wc-screen-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .wc-screen-tag {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.48);
+    margin-bottom: 8px;
+  }
+  .wc-screen-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 9px;
+    max-width: 280px;
+  }
+  .wc-screen-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.65;
+    max-width: 255px;
+    margin-bottom: 15px;
+  }
+  .wc-screen-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 40px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.07);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .wc-screen-cta:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  /* Label below active card */
+  .wc-cell-label {
+    position: absolute;
+    bottom: -50px;
+    left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease 0.35s, transform 0.55s cubic-bezier(0.16,1,0.3,1) 0.35s;
+  }
+  .wc-cell.active .wc-cell-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .wc-label-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+  }
+  .wc-label-tag {
+    font-size: 10px;
+    color: #6b7280;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* Controls */
+  .wc-controls {
+    margin-top: 92px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 10;
+    position: relative;
+  }
+  .wc-ctrl-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #9ca3af;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .wc-ctrl-btn:hover { border-color: #d1d5db; color: #374151; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+  .wc-ctrl-btn:active { transform: scale(0.93); }
+
+  .wc-pips-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .wc-pips { display: flex; gap: 8px; align-items: center; }
+  .wc-pip {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #d1d5db;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background 0.25s, transform 0.25s;
+    padding: 0;
+  }
+  .wc-pip.active { background: #374151; transform: scale(1.6); }
+
+  .wc-progress-bar {
+    width: 72px;
+    height: 2px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .wc-progress-fill {
+    height: 100%;
+    background: #9ca3af;
+    border-radius: 2px;
+    width: 0%;
+  }
+
+  /* CTA Section */
+  .wc-cta-section {
+    margin-top: 80px;
+    width: 100%;
+    max-width: 700px;
+    padding: 48px 40px;
+    border-radius: 20px;
+    background: #111827;
+    border: 1px solid #1f2937;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+  }
+  .wc-cta-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #f9fafb;
+    margin-bottom: 12px;
+  }
+  .wc-cta-desc {
+    font-size: 14px;
+    color: #9ca3af;
+    max-width: 400px;
+    line-height: 1.7;
+    margin: 0 auto 24px;
+  }
+  .wc-cta-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #111827;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .wc-cta-btn:hover { background: #f3f4f6; }
+  .wc-cta-btn:active { transform: scale(0.97); }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .wc-tilt-wrap {
+      transform: rotateX(8deg) rotateY(-12deg) rotateZ(-2deg);
+      width: 380px;
+      height: 280px;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    .wc-scene {
+      width: 380px;
+      height: 280px;
     }
+    .wc-cell {
+      width: 350px;
+      height: 240px;
+      left: 15px;
+      top: 20px;
+    }
+    .wc-screen-title { font-size: 17px; }
+    .wc-screen-desc { font-size: 10px; max-width: 200px; }
+    .wc-controls { margin-top: 72px; }
+    .wc-cta-section { margin-top: 60px; padding: 36px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .work-carousel-page { padding: 60px 12px 40px; }
+    .wc-tilt-wrap {
+      transform: rotateX(6deg) rotateY(-8deg) rotateZ(-1deg);
+      width: 300px;
+      height: 240px;
+    }
+    .wc-scene {
+      width: 300px;
+      height: 240px;
+    }
+    .wc-cell {
+      width: 270px;
+      height: 200px;
+      left: 15px;
+      top: 20px;
+    }
+    .wc-screen { inset: 6px; }
+    .wc-screen-logo { font-size: 11px; }
+    .wc-screen-title { font-size: 15px; }
+    .wc-screen-desc { font-size: 9px; max-width: 170px; }
+    .wc-screen-content { padding: 14px 14px 18px; }
+    .wc-controls { margin-top: 60px; }
+    .wc-header { margin-bottom: 36px; }
+    .wc-cta-section { margin-top: 48px; padding: 28px 16px; }
+    .wc-cta-title { font-size: 20px; }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById('wc-carousel');
+    const cells = Array.from(document.querySelectorAll('.wc-cell'));
+    const N = cells.length;
+
+    // Determine cell height based on viewport
+    function getCellH() {
+      if (window.innerWidth <= 480) return 240;
+      if (window.innerWidth <= 768) return 280;
+      return 380;
+    }
+
+    let cellH = getCellH();
+    let tz = Math.round((cellH / 2) / Math.tan(Math.PI / N));
+
+    function layoutCells() {
+      cellH = getCellH();
+      tz = Math.round((cellH / 2) / Math.tan(Math.PI / N));
+      cells.forEach((cell, i) => {
+        const angle = (360 / N) * i;
+        cell.style.transform = `rotateX(${angle}deg) translateZ(${tz}px)`;
+      });
+    }
+
+    layoutCells();
+
+    let current = 0;
+    let autoTimer = null;
+    const INTERVAL = 4000;
+
+    function setActive(idx) {
+      cells.forEach((c, i) => c.classList.toggle('active', i === idx));
+    }
+
+    function rotateTo(idx) {
+      current = ((idx % N) + N) % N;
+      const angle = (360 / N) * -current;
+      carousel.style.transform = `translateZ(-${tz}px) rotateX(${angle}deg)`;
+      document.querySelectorAll('.wc-pip').forEach((p, i) => p.classList.toggle('active', i === current));
+      setActive(current);
+    }
+
+    // Build pips
+    const pipsEl = document.getElementById('wc-pips');
+    cells.forEach((_, i) => {
+      const pip = document.createElement('button');
+      pip.className = 'wc-pip' + (i === 0 ? ' active' : '');
+      pip.setAttribute('aria-label', `Go to project ${i + 1}`);
+      pip.onclick = () => { stopAuto(); rotateTo(i); startAuto(); };
+      pipsEl.appendChild(pip);
+    });
+
+    // Progress bar
+    const pfill = document.getElementById('wc-pfill');
+    function startProgress() {
+      pfill.style.transition = 'none';
+      pfill.style.width = '0%';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        pfill.style.transition = `width ${INTERVAL}ms linear`;
+        pfill.style.width = '100%';
+      }));
+    }
+
+    function startAuto() {
+      stopAuto();
+      startProgress();
+      autoTimer = setInterval(() => { rotateTo(current + 1); startProgress(); }, INTERVAL);
+    }
+    function stopAuto() { clearInterval(autoTimer); autoTimer = null; }
+
+    document.getElementById('wc-prev').onclick = () => { stopAuto(); rotateTo(current - 1); startAuto(); };
+    document.getElementById('wc-next').onclick = () => { stopAuto(); rotateTo(current + 1); startAuto(); };
+
+    // Click active card to open its live link
+    cells.forEach((cell) => {
+      cell.addEventListener('click', () => {
+        if (cell.classList.contains('active')) {
+          const link = cell.getAttribute('data-link');
+          if (link) window.open(link, '_blank', 'noopener,noreferrer');
+        }
+      });
+    });
+
+    // Handle resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        layoutCells();
+        rotateTo(current);
+      }, 200);
+    });
+
+    rotateTo(0);
+    startAuto();
+  });
+</script>
