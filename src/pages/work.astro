@@ -1,0 +1,208 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import SectionHead from "@/components/sectionhead.astro";
+
+// SEO metadata
+const seoTitle = "Our Work - Client Projects & Case Studies";
+const seoDescription = "Explore FastShip's portfolio of successful client projects including AI solutions, food delivery platforms, healthcare automation, and more. See how we deliver 10x faster results.";
+const seoKeywords = "FastShip portfolio, client projects, case studies, software development projects, AI solutions, web development, mobile app development, custom software, digital transformation projects";
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://fastship.work"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Work",
+      "item": "https://fastship.work/work"
+    }
+  ]
+};
+
+// ─── PROJECT DATA ───────────────────────────────────────────
+// Update these entries with your real thumbnails and links later.
+const projects = [
+  {
+    title: "SuperLearn",
+    description: "AI-powered learning platform acquired by Zupee. Intelligent content delivery with adaptive learning paths.",
+    tag: "Acquired by Zupee",
+    highlight: true,
+    liveLink: "https://superlearn.in",
+    image: "/work/superlearn.png",
+  },
+  {
+    title: "Deepfake Detection",
+    description: "Advanced deepfake detection system built for a Nigerian client. Real-time video & image analysis using cutting-edge ML models.",
+    tag: "AI / ML",
+    liveLink: "https://deepfakesweb.com",
+    image: "/work/deepfake.png",
+  },
+  {
+    title: "CarrotFoodDelivery",
+    description: "End-to-end food delivery product — from ordering UX to driver logistics and real-time tracking.",
+    tag: "Product",
+    liveLink: "https://onlycheat.com",
+    image: "/work/carrot.png",
+  },
+  {
+    title: "8prompt",
+    description: "A product in the influencer marketing space. Image generation and creative workflow tooling for brands.",
+    tag: "Influencer Tech",
+    liveLink: "https://8prompt.app",
+    image: "/work/8prompt.png",
+  },
+  {
+    title: "What My Rank",
+    description: "GMV auditor tool that tracks and benchmarks marketplace seller rankings and performance metrics.",
+    tag: "GMV Auditor",
+    liveLink: "https://whatmyrank.com",
+    image: "/work/whatmyrank.png",
+  },
+  {
+    title: "Clinic Management & Automation",
+    description: "Healthcare automation platform streamlining patient management, appointments, and clinical workflows.",
+    tag: "Healthcare",
+    liveLink: "https://fastship.work",
+    image: "/work/clinic.png",
+  },
+  {
+    title: "Voice Agents & Video Agents",
+    description: "AI-driven voice and video automation agents deployed across multiple business verticals.",
+    tag: "Automation",
+    liveLink: "https://fastship.work",
+    image: "/work/voiceagents.png",
+  },
+];
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  image="/logo.jpeg"
+  structuredData={breadcrumbData}
+>
+  <Container>
+    <div class="mx-auto max-w-6xl mt-16 mb-20">
+      <SectionHead
+        title="Our Work"
+        description="A selection of projects we've shipped for clients — from AI products to full-scale platforms."
+      />
+
+      <!-- Project Grid -->
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <div class:list={[
+            "project-card group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
+            index === projects.length - 1 && projects.length % 3 === 1 && "lg:col-start-2",
+            index === projects.length - 1 && projects.length % 2 === 1 && "sm:col-start-1 sm:col-end-3 sm:max-w-md sm:mx-auto lg:col-end-auto lg:max-w-none"
+          ]}>
+            <!-- Thumbnail -->
+            <div class="relative h-52 w-full overflow-hidden bg-gray-100">
+              <img
+                src={project.image}
+                alt={`${project.title} thumbnail`}
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              <!-- Fallback placeholder shown when image fails to load -->
+              <div class="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+                <div class="text-center">
+                  <svg class="mx-auto mb-2 h-10 w-10 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span class="text-sm font-medium opacity-60">{project.title}</span>
+                </div>
+              </div>
+
+              <!-- Tag badge -->
+              {project.tag && (
+                <span class:list={[
+                  "absolute top-3 right-3 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm",
+                  project.highlight
+                    ? "bg-gradient-to-r from-amber-400 to-yellow-300 text-gray-900 shadow-lg shadow-amber-400/30 ring-1 ring-amber-300/50"
+                    : "bg-black/70 text-white"
+                ]}>
+                  {project.highlight && "🏆 "}{project.tag}
+                </span>
+              )}
+            </div>
+
+            <!-- Card body -->
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
+                {project.title}
+              </h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
+                {project.description}
+              </p>
+
+              <!-- Live link button -->
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-5 inline-flex items-center gap-2 self-start rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-black hover:shadow-md active:scale-[0.97]"
+              >
+                Live Link
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Call to Action -->
+      <div class="mt-20 rounded-2xl bg-gray-900 p-10 text-center text-white">
+        <h3 class="text-2xl font-bold mb-3">Have a project in mind?</h3>
+        <p class="text-gray-300 mb-6 max-w-lg mx-auto">
+          Let's build something remarkable together. We'd love to hear about your next big idea.
+        </p>
+        <a
+          href="https://calendly.com/contact-fastship/30min?back=1&month=2025-08"
+          target="_blank"
+          rel="noopener"
+          class="inline-block rounded-lg bg-white px-8 py-3 font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+        >
+          Book a Call
+        </a>
+      </div>
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  /* Subtle entrance animation for cards */
+  .project-card {
+    animation: cardFadeIn 0.5s ease-out both;
+  }
+  .project-card:nth-child(1) { animation-delay: 0.05s; }
+  .project-card:nth-child(2) { animation-delay: 0.10s; }
+  .project-card:nth-child(3) { animation-delay: 0.15s; }
+  .project-card:nth-child(4) { animation-delay: 0.20s; }
+  .project-card:nth-child(5) { animation-delay: 0.25s; }
+  .project-card:nth-child(6) { animation-delay: 0.30s; }
+  .project-card:nth-child(7) { animation-delay: 0.35s; }
+
+  @keyframes cardFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
